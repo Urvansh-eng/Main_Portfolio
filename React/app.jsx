@@ -264,7 +264,7 @@ function Hero() {
       </div>
 
       {/* Body copy */}
-      <div className="absolute left-6 md:left-10 bottom-52 z-20 max-w-xs">
+      <div className="absolute left-6 md:left-10 bottom-52 md:bottom-72 z-20 max-w-xs">
         <p className="text-xs text-white/55 font-dm leading-relaxed">
           B.Tech AI &amp; Data Science student with a strong foundation in
           programming, problem-solving, and core CS concepts. Building
@@ -367,9 +367,9 @@ function Works() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {realProjects.map((p, i) => (
           <a key={i} href={p.link} target="_blank" rel="noopener"
-            className={`proj-card reveal ${i===0?'md:col-span-2':''}`}
+            className="proj-card reveal"
             style={{
-              height: i===0?'clamp(240px,38vw,460px)':'clamp(220px,30vw,360px)',
+              height: 'clamp(220px,28vw,340px)',
               transitionDelay:`${i*.08}s`, display:'block', textDecoration:'none',
             }}>
             <div style={{

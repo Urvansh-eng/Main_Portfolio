@@ -59,8 +59,8 @@ body {
 /* ── Orb ── */
 .orb {
   position:absolute; width:280px; height:280px; border-radius:50%;
-  background:radial-gradient(circle,rgba(99,102,241,.45) 0%,rgba(99,102,241,.08) 55%,transparent 75%);
-  pointer-events:none; z-index:5; top:60px; left:36%;
+  background:radial-gradient(circle, rgba(99,102,241,0.9) 0%, rgba(99,102,241,0.5) 35%, rgba(99,102,241,0.1) 50%, transparent 55%);
+  pointer-events:none; z-index:5; top:25%; right:20%;
   animation:orbPulse 5s ease-in-out infinite;
 }
 @keyframes orbPulse {
@@ -84,11 +84,23 @@ body {
 .code-sig {
   font-family:'Space Mono',monospace;
   font-size:clamp(.6rem,.85vw,.82rem);
-  color:#6366F1; line-height:1.7;
+  color:#a5b4fc; line-height:1.7;
   white-space:pre;
+
+  /* Glass card */
+  background: rgba(7, 7, 20, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.08) inset,
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(99, 102, 241, 0.12);
 }
 .code-sig .line {
-  opacity:0;
+  opacity:2%;
   animation:fadeUp .4s ease forwards;
 }
 @keyframes fadeUp {
