@@ -316,18 +316,34 @@ function Hero() {
 /* ── Projects ── */
 const realProjects = [
   {
-    title:'Student Performance & Attendance Tracker',
-    sub:'Academic Tool', year:'2024',
-    stack:['Python','Data Analysis','UI'],
-    desc:'A comprehensive system to track student attendance and academic performance with analytics dashboards and progress reports.',
-    link: GITHUB,
+    title:'EVORI',
+    sub:'Cross-Platform AI Music Streaming Platform', year:'2024',
+    stack:['React','Next.js','TypeScript','Tailwind CSS','Supabase','Socket.io','Capacitor'],
+    desc:[
+      'Engineered a client-side Hybrid Recommendation System combining K-Nearest Neighbors (KNN) and Cosine Similarity over a normalized 5D audio feature space.',
+      'Bundled the web ecosystem into a native Android APK using Capacitor, configuring Foreground Services for true background audio playback and system media controls.',
+      'Designed a Metadata Re-Hydration layer to dynamically restore expiring streaming URLs from Audius/YouTube tokens upon page reloads, fixing playback crash bugs.',
+      'Secured backend workflows by implementing Supabase Row-Level Security (RLS) policies to safeguard user databases.'
+    ],
+    links: [
+      { label: 'Launch Web App', url: 'https://evori-1.onrender.com' },
+      { label: 'Source Code', url: GITHUB },
+      { label: 'Download APK', url: '#' }
+    ],
+    image: 'images/evori-bg.png'
   },
   {
-    title:'2D Game',
-    sub:'Game Dev', year:'2024',
-    stack:['Unity','C#','Game Dev'],
-    desc:'A fully playable 2D game built with Unity, featuring custom mechanics, level design, and optimised rendering pipeline.',
-    link: GITHUB,
+    title:'Personal Portfolio Website',
+    sub:'Portfolio', year:'2024',
+    stack:['Next.js','Tailwind CSS','JavaScript','Vercel'],
+    desc:[
+      'Designed and developed a dark-mode, cyber-inspired portfolio site utilizing modern React composition patterns.',
+      'Integrated micro-interactions including a custom trailing cursor script and scroll-triggered fade-in UI animations.',
+      'Configured automated deployment workflows utilizing Vercel\'s native CI/CD pipelines.'
+    ],
+    links: [
+      { label: 'Source Code', url: GITHUB }
+    ]
   },
 ];
 
@@ -366,10 +382,10 @@ function Works() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {realProjects.map((p, i) => (
-          <a key={i} href={p.link} target="_blank" rel="noopener"
+          <div key={i}
             className="proj-card reveal"
             style={{
-              height: 'clamp(220px,28vw,340px)',
+              minHeight: 'clamp(440px, 40vw, 550px)',
               transitionDelay:`${i*.08}s`, display:'block', textDecoration:'none',
             }}>
             <div style={{
@@ -378,25 +394,27 @@ function Works() {
                 ?'linear-gradient(135deg,#0f0f2a 0%,#1a1040 50%,#0d1a2a 100%)'
                 :'linear-gradient(135deg,#0a0a1f 0%,#12102a 100%)',
             }} />
+            {p.image && <img src={p.image} alt={p.title} />}
             <div className="proj-card-overlay" />
-            <div className="absolute top-4 left-4 z-10 flex gap-2 flex-wrap">
+            <div className="absolute top-4 left-4 right-12 z-10 flex gap-2 flex-wrap">
               {p.stack.map(t => <span key={t} className="stack-pill">{t}</span>)}
-            </div>
-            {/* "View on GitHub" badge */}
-            <div className="absolute top-4 right-10 z-10">
-              <span style={{
-                fontFamily:"'Space Mono',monospace",fontSize:'.5rem',
-                letterSpacing:'.12em',textTransform:'uppercase',
-                color:'rgba(99,102,241,.8)',
-              }}>↗ GITHUB</span>
             </div>
             <div className="absolute bottom-0 left-0 p-6 z-10 w-full">
               <p className="meta-label text-white/40 mb-1">{p.sub} — {p.year}</p>
-              <h3 className="font-bebas text-2xl md:text-4xl tracking-wide">{p.title}</h3>
-              <p className="text-white/45 font-dm text-xs mt-2 max-w-lg leading-relaxed hidden md:block">{p.desc}</p>
+              <h3 className="font-bebas text-2xl md:text-3xl tracking-wide mb-3">{p.title}</h3>
+              <ul className="text-white/45 font-dm text-[0.65rem] md:text-xs mt-2 max-w-lg leading-relaxed hidden md:flex flex-col gap-1.5 list-disc pl-4 mb-5">
+                {Array.isArray(p.desc) ? p.desc.map((bullet, idx) => <li key={idx}>{bullet}</li>) : <li>{p.desc}</li>}
+              </ul>
+              <div className="flex gap-4 flex-wrap">
+                {p.links?.map(link => (
+                  <a key={link.label} href={link.url} target="_blank" rel="noopener" className="bracket-btn text-[0.6rem]" style={{cursor:'none'}}>
+                    <span>[</span> {link.label} <span>]</span>
+                  </a>
+                ))}
+              </div>
             </div>
             <Cross className="absolute top-4 right-4 z-10" />
-          </a>
+          </div>
         ))}
       </div>
 
